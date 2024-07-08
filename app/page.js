@@ -1,7 +1,9 @@
-import Image from "next/image";
-import Blog from "./components/blog";
-import Carousel from "./components/carousel";
+// import Image from "next/image";
+// import Blog from "./components/blog";
+// import Carousel from "./components/carousel";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+const Blog = dynamic(() => import("./components/blog"), {ssr: false});
 
 export default function Home() {
   return (
