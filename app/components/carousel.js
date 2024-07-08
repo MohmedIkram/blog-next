@@ -80,7 +80,7 @@ function Carousel() {
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide> */}
       </Swiper>
-      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-20 w-[80%]" />
+      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-20 w-[80%]" />
     </section>
   );
 }
