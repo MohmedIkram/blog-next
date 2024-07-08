@@ -1,4 +1,16 @@
+export async function generateStaticParams() {
+  // const posts = await fetch('https://.../posts').then((res) => res.json())
+ 
+  // return posts.map((post) => ({
+  //   slug: post.slug,
+  // }))
+  const slug = "data"
+  return slug
+}
+
 export default function Page({ params }) {
+  const { slug } = params
+  console.log("🚀 ~ Page ~ slug:", slug)
   return (
     <>
       <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white  antialiased dark:text-black">
