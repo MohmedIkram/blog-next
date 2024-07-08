@@ -170,7 +170,7 @@ function Blog() {
                 className="h-full overflow-hidden border-2 border-gray-200 rounded-lg shadow-lg group border-opacity-60"
               >
                 <img
-                  className="object-cover object-center w-full transition duration-500 ease-in-out transform group-hover:scale-105 md:h-36 lg:h-48"
+                  className="object-cover object-center w-full h-16 transition duration-500 ease-in-out transform group-hover:scale-105 md:h-36 lg:h-48"
                   src={item?.image_url}
                   alt="blog"
                 />

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Blog from "./components/blog";
 import Carousel from "./components/carousel";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen px-24 ">
+    <main className="min-h-screen md:px-24 ">
       {/* <Carousel /> */}
       {/* <!-- component --> */}
       <div className="flex items-center justify-center text-black">
@@ -36,8 +37,8 @@ export default function Home() {
                       <p className="mt-2 text-base leading-4 text-white">
                         Dive into minimalism
                       </p>
-                      <a
-                        href="javascript:void(0)"
+                      <Link
+                       href="/"
                         className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -59,7 +60,7 @@ export default function Home() {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <img
@@ -80,8 +81,8 @@ export default function Home() {
                       <p className="mt-2 text-base leading-4 text-white">
                         Dive into minimalism
                       </p>
-                      <a
-                        href="javascript:void(0)"
+                      <Link
+                       href="/"
                         className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -103,7 +104,7 @@ export default function Home() {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <img
@@ -125,8 +126,8 @@ export default function Home() {
                     <p className="mt-2 text-base leading-4 text-white">
                       Dive into minimalism
                     </p>
-                    <a
-                      href="javascript:void(0)"
+                    <Link
+                      href="/"
                       className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                     >
                       <p className="pr-2 text-sm font-medium leading-none">
@@ -148,7 +149,7 @@ export default function Home() {
                           stroke-linejoin="round"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <img
@@ -176,8 +177,8 @@ export default function Home() {
                     <p className="mt-2 text-base leading-4 text-white">
                       Dive into minimalism
                     </p>
-                    <a
-                      href="javascript:void(0)"
+                    <Link
+                      href="/"
                       className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                     >
                       <p className="pr-2 text-sm font-medium leading-none">
@@ -199,7 +200,7 @@ export default function Home() {
                           stroke-linejoin="round"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <img
@@ -226,8 +227,8 @@ export default function Home() {
                       <p className="mt-2 text-base leading-4 text-white">
                         Dive into minimalism
                       </p>
-                      <a
-                        href="javascript:void(0)"
+                      <Link
+                       href="/"
                         className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -249,7 +250,7 @@ export default function Home() {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <img
@@ -270,8 +271,8 @@ export default function Home() {
                       <p className="mt-2 text-base leading-4 text-white">
                         Dive into minimalism
                       </p>
-                      <a
-                        href="javascript:void(0)"
+                      <Link
+                      href="/"
                         className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -293,7 +294,7 @@ export default function Home() {
                             stroke-linejoin="round"
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <img
