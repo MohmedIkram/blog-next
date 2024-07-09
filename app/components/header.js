@@ -15,10 +15,10 @@ function Header() {
             height={100}
             width={100}
             className="h-8"
-            alt="Flowbite Logo"
+            alt="Blog Archives Logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Flowbite
+          Blog Archives
           </span>
         </Link>
         <button
