@@ -18,9 +18,9 @@ export default function Contact({ settings }) {
     watch,
     control,
     setValue,
-    formState: { errors, isSubmitSuccessful, isSubmitting }
+    formState: { errors, isSubmitSuccessful, isSubmitting },
   } = useForm({
-    mode: "onTouched"
+    mode: "onTouched",
   });
   const [isSuccess, setIsSuccess] = useState(false);
   const [message, setMessage] = useState(false);
@@ -31,7 +31,7 @@ export default function Contact({ settings }) {
     access_key: apiKey,
     settings: {
       from_name: "Stablo Template",
-      subject: "New Contact Message from Stablo Website"
+      subject: "New Contact Message from Stablo Website",
     },
     onSuccess: (msg, data) => {
       setIsSuccess(true);
@@ -41,7 +41,7 @@ export default function Contact({ settings }) {
     onError: (msg, data) => {
       setIsSuccess(false);
       setMessage(msg);
-    }
+    },
   });
 
   return (
@@ -59,8 +59,8 @@ export default function Contact({ settings }) {
             Contact Stablo
           </h2>
           <p className="max-w-sm mt-5">
-            Have something to say? We are here to help. Fill up the
-            form or send email or call phone.
+            Have something to say? We are here to help. Fill up the form or send
+            email or call phone.
           </p>
 
           <div className="mt-5">
@@ -71,9 +71,7 @@ export default function Contact({ settings }) {
             {settings?.email && (
               <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
                 {/* <EnvelopeIcon className="w-4 h-4" /> */}
-                <a href={`mailto:${settings.email}`}>
-                  {settings.email}
-                </a>
+                <a href={`mailto:${settings.email}`}>{settings.email}</a>
               </div>
             )}
             {settings?.phone && (
@@ -91,7 +89,8 @@ export default function Contact({ settings }) {
               id=""
               className="hidden"
               style={{ display: "none" }}
-              {...register("botcheck")}></input>
+              {...register("botcheck")}
+            ></input>
 
             <div className="mb-5">
               <input
@@ -105,7 +104,7 @@ export default function Contact({ settings }) {
                 }`}
                 {...register("name", {
                   required: "Full name is required",
-                  maxLength: 80
+                  maxLength: 80,
                 })}
               />
               {errors.name && (
@@ -134,8 +133,8 @@ export default function Contact({ settings }) {
                   required: "Enter your email",
                   pattern: {
                     value: /^\S+@\S+$/i,
-                    message: "Please enter a valid email"
-                  }
+                    message: "Please enter a valid email",
+                  },
                 })}
               />
               {errors.email && (
@@ -155,7 +154,7 @@ export default function Contact({ settings }) {
                     : "border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
                 }`}
                 {...register("message", {
-                  required: "Enter your Message"
+                  required: "Enter your Message",
                 })}
               />
               {errors.message && (
@@ -168,24 +167,28 @@ export default function Contact({ settings }) {
 
             <button
               type="submit"
-              className="w-full py-4 font-semibold text-white transition-colors bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-offset-2 focus:ring focus:ring-gray-200 px-7 dark:bg-white dark:text-black ">
+              className="w-full py-4 font-semibold text-white transition-colors bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-offset-2 focus:ring focus:ring-gray-200 px-7 dark:bg-white dark:text-black "
+            >
               {isSubmitting ? (
                 <svg
                   className="w-5 h-5 mx-auto text-white dark:text-black animate-spin"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  viewBox="0 0 24 24">
+                  viewBox="0 0 24 24"
+                >
                   <circle
                     className="opacity-25"
                     cx="12"
                     cy="12"
                     r="10"
                     stroke="currentColor"
-                    strokeWidth="4"></circle>
+                    strokeWidth="4"
+                  ></circle>
                   <path
                     className="opacity-75"
                     fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
                 </svg>
               ) : (
                 "Send Message"

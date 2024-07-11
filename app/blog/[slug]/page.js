@@ -1,40 +1,88 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export async function generateStaticParams() {
   // const posts = await fetch('https://.../posts').then((res) => res.json())
- 
+
   // return posts.map((post) => ({
   //   slug: post.slug,
   // }))
-  
- 
-  return [{ id: '1' }, { id: '2' }, { id: '3' }]
+
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
 
 export default function Page({ params }) {
-  const { id } = params
-  console.log("🚀 ~ Page ~ id:", id)
+  const { id } = params;
+  console.log("🚀 ~ Page ~ id:", id);
+  const blogData = [
+    {
+      image:
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png",
+      alt: "Image 1",
+      title: "Our first office",
+      description:
+        "Over the past year, Volosoft has undergone many changes! After months of preparation.",
+      read_time: "2 minutes",
+      url: "#",
+    },
+    {
+      image:
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png",
+      alt: "Image 2",
+      title: "Enterprise design tips",
+      description:
+        "Over the past year, Volosoft has undergone many changes! After months of preparation.",
+      read_time: "12 minutes",
+      url: "#",
+    },
+    {
+      image:
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png",
+      alt: "Image 3",
+      title: "We partnered with Google",
+      description:
+        "Over the past year, Volosoft has undergone many changes! After months of preparation.",
+      read_time: "8 minutes",
+      url: "#",
+    },
+    {
+      image:
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png",
+      alt: "Image 4",
+      title: "Our first project with React",
+      description:
+        "Over the past year, Volosoft has undergone many changes! After months of preparation.",
+      read_time: "4 minutes",
+      url: "#",
+    },
+  ];
+
   return (
     <>
-      <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white  antialiased dark:text-black">
-        <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
-          <article className=" w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+      <main className="pt-8 pb-16 antialiased bg-white lg:pt-16 lg:pb-24 dark:text-black">
+        <div className="flex justify-center max-w-screen-xl px-4 mx-auto ">
+          <article className="w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <header className="mb-4 lg:mb-6 not-format">
-              {/* <address className="flex items-center mb-6 not-italic">
-                <div className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                  <img
-                    className="mr-4 w-16 h-16 rounded-full"
+              <address className="flex items-center mb-6 not-italic">
+                <div className="inline-flex items-center mr-3 text-sm text-gray-900">
+                  <Image
+                    height={64}
+                    width={64}
+                    className="w-16 h-16 mr-4 rounded-full"
                     src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                     alt="Jese Leos"
                   />
                   <div>
-                    <a
+                    <Link
                       href="#"
                       rel="author"
-                      className="text-xl font-bold text-gray-900 dark:text-white"
+                      className="text-xl font-bold text-gray-900"
                     >
-                      Jese Leos
-                    </a>
+                      Avinesh
+                    </Link>
                     <p className="text-base text-gray-500 dark:text-gray-400">
-                      Graphic Designer, educator & CEO Flowbite
+                      Web Developer, Graphic Designer, Entrepreneur & CEO
+                      Avicore
                     </p>
                     <p className="text-base text-gray-500 dark:text-gray-400">
                       <time
@@ -47,7 +95,7 @@ export default function Page({ params }) {
                     </p>
                   </div>
                 </div>
-              </address> */}
+              </address>
               <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-black">
                 Best practices for successful prototypes
               </h1>
@@ -64,18 +112,18 @@ export default function Page({ params }) {
             </p>
             <p>
               But then I found a{" "}
-              <a href="https://flowbite.com">
+              <Link href="https://flowbite.com">
                 component library based on Tailwind CSS called Flowbite
-              </a>
+              </Link>
               . It comes with the most commonly used UI components, such as
               buttons, navigation bars, cards, form elements, and more which are
               conveniently built with the utility classes from Tailwind CSS.
             </p>
             <figure>
-              <img
+              {/* <img
                 src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png"
                 alt=""
-              />
+              /> */}
               <figcaption>Digital art by Anonymous</figcaption>
             </figure>
             <h2>Getting started with Flowbite</h2>
@@ -92,9 +140,9 @@ export default function Page({ params }) {
             </p>
             <p>
               You can check out the{" "}
-              <a href="https://flowbite.com/docs/getting-started/quickstart/">
+              <Link href="https://flowbite.com/docs/getting-started/quickstart/">
                 quickstart guide
-              </a>{" "}
+              </Link>{" "}
               to explore the elements by including the CDN files into your
               project. But if you want to build a project with Flowbite I
               recommend you to follow the build tools steps so that you can
@@ -104,9 +152,9 @@ export default function Page({ params }) {
               Youll also receive a lot of useful application UI, marketing UI,
               and e-commerce pages that can help you get started with your
               projects even faster. You can check out this{" "}
-              <a href="https://flowbite.com/docs/components/tables/">
+              <Link href="https://flowbite.com/docs/components/tables/">
                 comparison table
-              </a>{" "}
+              </Link>{" "}
               to better understand the differences between the open-source and
               pro version of Flowbite.
             </p>
@@ -183,10 +231,10 @@ export default function Page({ params }) {
               <li>Diagonal stress in the strokes</li>
               <li>Slanted serifs on lower-case ascenders</li>
             </ul>
-            <img
+            {/* <img
               src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-2.png"
               alt=""
-            />
+            /> */}
             <ol>
               <li>Low contrast between thick and thin strokes</li>
               <li>Diagonal stress in the strokes</li>
@@ -308,115 +356,54 @@ export default function Page({ params }) {
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8 w-[50%]" />
 
       <aside aria-label="Related articles" className="py-8 lg:py-24">
-        <div className="px-4 mx-auto max-w-screen-xl">
-          <h2 className="mb-8 text-2xl font-bold text-center xl:text-5xl  dark:text-black">
+        <div className="max-w-screen-xl px-4 mx-auto">
+          <h2 className="mb-8 text-2xl font-bold text-center xl:text-5xl dark:text-black">
             You May Also Like
           </h2>
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            <article className="max-w-xs">
-              <a href="#">
-                <img
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png"
-                  className="mb-5 rounded-lg"
-                  alt="Image 1"
-                />
-              </a>
-              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-black">
-                <a href="#">Our first office</a>
-              </h2>
-              <p className="mb-4 text-gray-500 dark:text-gray-400">
-                Over the past year, Volosoft has undergone many changes! After
-                months of preparation.
-              </p>
-              <a
-                href="#"
-                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
-              >
-                Read in 2 minutes
-              </a>
-            </article>
-            <article className="max-w-xs">
-              <a href="#">
-                <img
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png"
-                  className="mb-5 rounded-lg"
-                  alt="Image 2"
-                />
-              </a>
-              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-black">
-                <a href="#">Enterprise design tips</a>
-              </h2>
-              <p className="mb-4  text-gray-500 dark:text-gray-400">
-                Over the past year, Volosoft has undergone many changes! After
-                months of preparation.
-              </p>
-              <a
-                href="#"
-                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
-              >
-                Read in 12 minutes
-              </a>
-            </article>
-            <article className="max-w-xs">
-              <a href="#">
-                <img
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png"
-                  className="mb-5 rounded-lg"
-                  alt="Image 3"
-                />
-              </a>
-              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-black">
-                <a href="#">We partnered with Google</a>
-              </h2>
-              <p className="mb-4  text-gray-500 dark:text-gray-400">
-                Over the past year, Volosoft has undergone many changes! After
-                months of preparation.
-              </p>
-              <a
-                href="#"
-                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
-              >
-                Read in 8 minutes
-              </a>
-            </article>
-            <article className="max-w-xs">
-              <a href="#">
-                <img
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png"
-                  className="mb-5 rounded-lg"
-                  alt="Image 4"
-                />
-              </a>
-              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-black">
-                <a href="#">Our first project with React</a>
-              </h2>
-              <p className="mb-4  text-gray-500 dark:text-gray-400">
-                Over the past year, Volosoft has undergone many changes! After
-                months of preparation.
-              </p>
-              <a
-                href="#"
-                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
-              >
-                Read in 4 minutes
-              </a>
-            </article>
+            {blogData.map((data, index) => {
+              return (
+                <article key={index} className="max-w-xs">
+                  <Link href="#">
+                    <Image
+                      height={180}
+                      width={276}
+                      src={data.image}
+                      className="mb-5 rounded-lg"
+                      alt="Image 1"
+                    />
+                  </Link>
+                  <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-black">
+                    <Link href="#">{data.title}</Link>
+                  </h2>
+                  <p className="mb-4 text-gray-500 dark:text-gray-400">
+                    {data.description}
+                  </p>
+                  <Link
+                    href="#"
+                    className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                  >
+                    {data?.read_time}
+                  </Link>
+                </article>
+              );
+            })}
           </div>
         </div>
       </aside>
 
       <section className="pb-[5%]">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 bg-white dark:bg-gray-900 rounded-[60px]">
-          <div className="mx-auto max-w-screen-md sm:text-center">
+          <div className="max-w-screen-md mx-auto sm:text-center">
             <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
               Sign up for our newsletter
             </h2>
-            <p className="mx-auto mb-8 max-w-2xl  text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">
+            <p className="max-w-2xl mx-auto mb-8 text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">
               Stay up to date with the roadmap progress, announcements and
               exclusive discounts feel free to sign up with your email.
             </p>
             <form action="#">
-              <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
+              <div className="items-center max-w-screen-sm mx-auto mb-3 space-y-4 sm:flex sm:space-y-0">
                 <div className="relative w-full">
                   <label
                     htmlFor="email"
@@ -424,7 +411,7 @@ export default function Page({ params }) {
                   >
                     Email address
                   </label>
-                  <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg
                       className="w-4 h-4 text-gray-500 dark:text-gray-400"
                       aria-hidden="true"
@@ -437,7 +424,7 @@ export default function Page({ params }) {
                     </svg>
                   </div>
                   <input
-                    className="block p-3 pl-9 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="block w-full p-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg pl-9 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter your email"
                     type="email"
                     id="email"
@@ -447,20 +434,20 @@ export default function Page({ params }) {
                 <div>
                   <button
                     type="submit"
-                    className="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-primary-700 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                    className="w-full px-5 py-3 text-sm font-medium text-center text-white border rounded-lg cursor-pointer bg-primary-700 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   >
                     Subscribe
                   </button>
                 </div>
               </div>
-              <div className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300">
+              <div className="max-w-screen-sm mx-auto text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300">
                 We care about the protection of your data.{" "}
-                <a
+                <Link
                   href="#"
                   className="font-medium text-primary-600 dark:text-primary-500 hover:underline"
                 >
                   Read our Privacy Policy
-                </a>
+                </Link>
                 .
               </div>
             </form>

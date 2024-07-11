@@ -18,7 +18,7 @@ function Header() {
             alt="Blog Archives Logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-          Blog Archives
+            Blog Archives
           </span>
         </Link>
         <button

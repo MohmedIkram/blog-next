@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        domains: [
+          "flowbite.s3.amazonaws.com",
+          "flowbite.com",
+          "images.unsplash.com"
+        ],
+      },
+};
 
 export default nextConfig;

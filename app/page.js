@@ -3,7 +3,7 @@
 // import Carousel from "./components/carousel";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-const Blog = dynamic(() => import("./components/blog"), {ssr: false});
+const Blog = dynamic(() => import("./components/blog"), { ssr: false });
 
 export default function Home() {
   return (
@@ -40,7 +40,7 @@ export default function Home() {
                         Dive into minimalism
                       </p>
                       <Link
-                       href="/"
+                        href="/"
                         className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -84,7 +84,7 @@ export default function Home() {
                         Dive into minimalism
                       </p>
                       <Link
-                       href="/"
+                        href="/"
                         className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -230,7 +230,7 @@ export default function Home() {
                         Dive into minimalism
                       </p>
                       <Link
-                       href="/"
+                        href="/"
                         className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
@@ -274,7 +274,7 @@ export default function Home() {
                         Dive into minimalism
                       </p>
                       <Link
-                      href="/"
+                        href="/"
                         className="flex items-center mt-4 text-white cursor-pointer focus:outline-none focus:underline hover:text-gray-200 hover:underline"
                       >
                         <p className="pr-2 text-sm font-medium leading-none">
