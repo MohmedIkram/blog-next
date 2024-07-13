@@ -96,7 +96,7 @@ export default function Page({ params }) {
                   </div>
                 </div>
               </address>
-              <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-black">
+              <h1 className="mb-4 text-3xl font-extrabold leading-tight text-center text-gray-900 lg:mb-6 lg:text-4xl xl:text-5xl dark:text-black">
                 Best practices for successful prototypes
               </h1>
             </header>
