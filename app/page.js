@@ -3,14 +3,87 @@
 // import Carousel from "./components/carousel";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 const Blog = dynamic(() => import("./components/blog"), { ssr: false });
+import { client } from "@/sanity/lib/client";
 
-export default function Home() {
+async function getData(){
+  const query =`
+  *[_type == "blog"] | order(_createdAt desc){
+  title,
+  body,
+  slug}
+  `
+  const data = await client.fetch(query)
+  return data
+}
+
+export default async function Home() {
+  const data = await getData()
+  console.log("🚀 ~ Home ~ data:", data)
+  const Data = 
+  {
+    title: "Editors Choice",
+    description: "If you're looking for random paragraphs, you've come to the right place. When a random word or a random sentence isn't quite enough",
+    items: [
+      {
+        date: "12 April 2021",
+        title: "The Decorated Ways",
+        description: "Dive into minimalism",
+        link: "/",
+        image: "https://i.ibb.co/DYxtCJq/img-1.png",
+        alt: "chair"
+      },
+      {
+        date: "12 April 2021",
+        title: "The Decorated Ways",
+        description: "Dive into minimalism",
+        link: "/",
+        image: "https://i.ibb.co/3C5HvxC/img-2.png",
+        alt: "wall design"
+      },
+      {
+        date: "12 April 2021",
+        title: "The Decorated Ways",
+        description: "Dive into minimalism",
+        link: "/",
+        image: "https://i.ibb.co/Ms4qyXp/img-3.png",
+        alt: "sitting place"
+      },
+      {
+        date: "12 April 2021",
+        title: "The Decorated Ways",
+        description: "Dive into minimalism",
+        link: "/",
+        image: "https://i.ibb.co/6Wfjf2w/img-4.png",
+        alt: "sitting place"
+      },
+      {
+        date: "12 April 2021",
+        title: "The Decorated Ways",
+        description: "Dive into minimalism",
+        link: "/",
+        image: "https://i.ibb.co/3yvZBpm/img-5.png",
+        alt: "chair"
+      },
+      {
+        date: "12 April 2021",
+        title: "The Decorated Ways",
+        description: "Dive into minimalism",
+        link: "/",
+        image: "https://i.ibb.co/gDdnJb5/img-6.png",
+        alt: "wall design"
+      }
+    ]
+  }
+  console.log("---0-----");
+  
+
   return (
-    <main className="min-h-screen md:px-24 ">
+    <main className="min-h-screen md:px-14 xl:px-24 ">
       {/* <Carousel /> */}
       {/* <!-- component --> */}
-      <div className="flex items-center justify-center text-black">
+      {/* <div className="flex items-center justify-center text-black">
         <div className="px-4 2xl:mx-auto 2xl:container lg:px-20 lg:py-16 md:py-12 md:px-6 py-9 w-96 sm:w-auto">
           <div
             role="main"
@@ -309,7 +382,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* <article className="py-4 d-flex w-[20%] flex-column">
   <a href="https://github.blog/2024-06-03-how-github-reduced-testing-time-for-ios-apps-with-new-runner-features/" className="mb-3 overflow-hidden d-block col-12 position-relative rounded-2 tease-thumbnail">
   <Image src="/Productivity-DarkMode-3.webp" width="800" height="425" alt="How GitHub reduced testing time for iOS apps with new runner features" className="d-block width-full height-auto rounded-2 tease-thumbnail__img cover-image" loading="lazy" decoding="async" /></a>
