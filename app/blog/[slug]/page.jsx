@@ -1,14 +1,26 @@
+import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 
-export async function generateStaticParams() {
-  // const posts = await fetch('https://.../posts').then((res) => res.json())
+// export async function generateStaticParams() {
+//   // const posts = await fetch('https://.../posts').then((res) => res.json())
 
-  // return posts.map((post) => ({
-  //   slug: post.slug,
-  // }))
+//   // return posts.map((post) => ({
+//   //   slug: post.slug,
+//   // }))
 
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+//   return [{ id: "1" }, { id: "2" }, { id: "3" }];
+// }
+
+async function getData(slug){
+  const query =`
+  *[_type == "blog"] && slug.current == "" {
+  title,
+  body,
+  }
+  `
+  const data = await client.fetch(query)
+  return data
 }
 
 export default function Page({ params }) {
@@ -59,6 +71,7 @@ export default function Page({ params }) {
 
   return (
     <>
+    {/* <PortableText value={product.info} /> */}
       <main className="pt-8 pb-16 antialiased bg-white lg:pt-16 lg:pb-24 dark:text-black">
         <div className="flex justify-center max-w-screen-xl px-4 mx-auto ">
           <article className="w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">

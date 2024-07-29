@@ -399,7 +399,7 @@ export default async function Home() {
  				
  			</div>
  		</div></div></div></article> */}
-      <Blog />
+      <Blog data={data}/>
     </main>
   );
 }
