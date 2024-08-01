@@ -3,10 +3,11 @@ import Image from "next/image";
 import React, { Suspense, useEffect, useState } from "react";
 import Lottie from "react-lottie";
 import Skeleton from "./blogSkeleton";
+import Link from "next/link";
 // import animationData from './loadAnimation.json';
 
-function Blog({data}) {
-  // console.log("🚀 ~ Blog ~ data:", data)
+function Blog({ data }) {
+  console.log("🚀 ~ Blog ~ data00000:", data);
   const initialData = [
     {
       image_url:
@@ -178,33 +179,37 @@ function Blog({data}) {
         </h1>
         <div className="grid w-full grid-cols-1 gap-5 p-5 mx-auto sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {data.map((item, key) => {
-            console.log("🚀 ~ {data.map ~ item:", item)
+            console.log("🚀 ~ {data.map ~ item:1111", item);
             // return
             return (
               <Suspense key={key} fallback={<Skeleton />}>
-                <article
-                  key={key}
-                  className={` ${!item?.image_url} && "animate-pulse"} h-full overflow-hidden border-2 border-gray-200 rounded-lg shadow-lg group border-opacity-60`}
-                >
-                  <Image
-                    height={347}
-                    width={192}
-                    className="object-cover object-center w-full h-16 transition duration-500 ease-in-out transform group-hover:scale-105 md:h-36 lg:h-48"
-                    src={data?.image_url ?? "https://images.unsplash.com/photo-1660569883128-765b7c16f731?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"}
-                    alt="blog"
-                  />
-                  <h2 className="inline-block px-6 pt-4 pb-1 text-xs font-semibold tracking-widest text-orange-600 uppercase cursor-pointer title-font hover:font-bold">
-                    {item?.title}
-                  </h2>
-                  <div className="px-6 py-1">
-                    <h1 className="inline-block mb-3 text-xl font-extrabold tracking-wide text-gray-800 cursor-pointer title-font capitali">
-                      {item.title}
-                    </h1>
-                    <p className="mb-3 overflow-hidden leading-relaxed text-gray-500 cursor-pointer line-clamp-6">
-                      {item.description}
-                    </p>
-                  </div>
-                  {/* <div className="flex flex-wrap items-center justify-between px-6 pt-1 pb-4">
+                <Link href={"blog/" + item?.slug?.current ?? "#"}>
+                  <article
+                    key={key}
+                    className={` ${!data.title && "animate-pulse"}  h-full overflow-hidden border-2 border-gray-200 rounded-lg shadow-lg group border-opacity-60`}
+                  >
+                    <Image
+                      height={347}
+                      width={192}
+                      className="object-cover object-center w-full h-16 transition duration-500 ease-in-out transform group-hover:scale-105 md:h-36 lg:h-48"
+                      src={
+                        data?.image_url ??
+                        "https://images.unsplash.com/photo-1660569883128-765b7c16f731?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
+                      }
+                      alt="blog"
+                    />
+                    <h2 className="inline-block px-6 pt-4 pb-1 text-xs font-semibold tracking-widest text-orange-600 uppercase cursor-pointer title-font hover:font-bold">
+                      {item?.title}
+                    </h2>
+                    <div className="px-6 py-1">
+                      <h1 className="inline-block mb-3 text-xl font-extrabold tracking-wide text-gray-800 cursor-pointer title-font capitali">
+                        {item.title}
+                      </h1>
+                      <p className="mb-3 overflow-hidden leading-relaxed text-gray-500 cursor-pointer line-clamp-6">
+                        {item.description}
+                      </p>
+                    </div>
+                    {/* <div className="flex flex-wrap items-center justify-between px-6 pt-1 pb-4">
                     <div className="flex flex-wrap text-sm text-gray-500">
                       <span className="mr-1">{item?.date}</span>
                       <span className="">{item?.read_time}</span>
@@ -235,7 +240,8 @@ function Blog({data}) {
                       </span>
                     </div>
                   </div> */}
-                </article>
+                  </article>
+                </Link>
               </Suspense>
             );
           })}
