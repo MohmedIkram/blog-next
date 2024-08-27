@@ -4,6 +4,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Head from "next/head";
+import Script from "next/script";
 // import GoogleAdsense from "./components/GoogleAdsense";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,6 +20,11 @@ export default function RootLayout({ children }) {
       <Head>
         <meta name="google-adsense-account" content="ca-pub-2061189000957812" />
       </Head>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2061189000957812"
+        crossorigin="anonymous"
+      />
       <GoogleTagManager gtmId="GTM-K3VZFJB7" />
       <body className={inter.className}>
         <Header />
