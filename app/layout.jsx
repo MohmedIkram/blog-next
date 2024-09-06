@@ -5,6 +5,7 @@ import Footer from "./components/footer";
 import { GoogleTagManager } from "@next/third-parties/google";
 import Head from "next/head";
 import Script from "next/script";
+import { StoreProvider } from "./redux/StoreProvider";
 // import GoogleAdsense from "./components/GoogleAdsense";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,6 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <StoreProvider>
     <html lang="en">
       <Head>
         <meta name="google-adsense-account" content="ca-pub-2061189000957812" />
@@ -33,5 +35,6 @@ export default function RootLayout({ children }) {
       </body>
       {/* <GoogleAdsense pId={"key"}/> */}
     </html>
+    </StoreProvider>
   );
 }

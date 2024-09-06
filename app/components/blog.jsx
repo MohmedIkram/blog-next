@@ -158,15 +158,15 @@ function Blog({ data }) {
   //   }
   // };
 
-  const [displayedData, setDisplayedData] = useState(initialData.slice(0, 6));
+  const [displayedData, setDisplayedData] = useState(data.slice(0, 6));
   const [hasMore, setHasMore] = useState(true);
 
   const loadMore = () => {
     const newLength = displayedData.length + 3;
-    const newData = initialData.slice(0, newLength);
+    const newData = data.slice(0, newLength);
     setDisplayedData(newData);
 
-    if (newData.length >= initialData.length) {
+    if (newData.length >= data.length) {
       setHasMore(false);
     }
   };
@@ -186,7 +186,7 @@ function Blog({ data }) {
                 <Link href={"blog/" + item?.slug?.current ?? "#"}>
                   <article
                     key={key}
-                    className={` ${!data.title && "animate-pulse"}  h-full overflow-hidden border-2 border-gray-200 rounded-lg shadow-lg group border-opacity-60`}
+                    className={`h-full overflow-hidden border-2 border-gray-200 rounded-lg shadow-lg group border-opacity-60`}
                   >
                     <Image
                       height={347}
