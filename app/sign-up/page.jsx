@@ -24,9 +24,7 @@ export default function Login() {
     setIsSubmit(true);
   };
   const handleSignup = () => {
-    console.log("🚀 ~ Login ~ formValues:", formValues)
-
-
+    console.log("🚀 ~ Login ~ handleSignup:", formValues)
   };
 
   useEffect(() => {

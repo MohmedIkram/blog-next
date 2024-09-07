@@ -6,7 +6,6 @@ import { client } from "@/sanity/lib/client";
 
 
 export default async function Page({ params , blog}) {
-  console.log("🚀 ~ Page ~ blog:", blog)
   
   const { slug } = params;
 
@@ -52,21 +51,17 @@ export default async function Page({ params , blog}) {
       url: "#",
     },
   ];
-
-  const pageSlug = params.slug;
-  console.log(pageSlug);
-  if (!pageSlug) {
+  if (!slug) {
     return {
       notFound: true,
     };
   }
   const query =
-    `*[ _type == "blog" && slug.current == "${pageSlug}" ]{
+    `*[ _type == "blog" && slug.current == "${slug}" ]{
       title,
       body
     }`
   const data = await client.fetch(query, { slug });
-  console.log(data, "---data---data");
 
   return (
     <>
