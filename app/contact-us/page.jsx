@@ -159,7 +159,7 @@ export default function Contact({ settings }) {
               />
               {errors.message && (
                 <div className="mt-1 text-red-600">
-                  {" "}
+                  
                   <small>{errors.message.message}</small>
                 </div>
               )}

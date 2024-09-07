@@ -242,7 +242,7 @@ function Footer() {
               Blog Archives
             </a>
             <span className="block text-sm text-center text-gray-500 dark:text-gray-400">
-              © 2024{" "}
+              © 2024
               <a href="#" className="hover:underline">
                 Web Archives™
               </a>

@@ -5,7 +5,9 @@ import { client } from "@/sanity/lib/client";
 // import BlockContent from "@sanity/block-content-to-react";
 
 
-export default async function Page({ params }) {
+export default async function Page({ params , blog}) {
+  console.log("🚀 ~ Page ~ blog:", blog)
+  
   const { slug } = params;
 
   const blogData = [
@@ -211,7 +213,7 @@ export default async function Page({ params }) {
                 </div>
               </div>
               <div className="max-w-screen-sm mx-auto text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300">
-                We care about the protection of your data.{" "}
+                We care about the protection of your data.
                 <Link
                   href="#"
                   className="font-medium text-primary-600 dark:text-primary-500 hover:underline"

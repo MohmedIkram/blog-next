@@ -50,6 +50,11 @@ export const post = {
       type: 'datetime',
     },
     {
+      title: 'ShortDescription',
+      name: 'ShortDescription',
+      type: 'string'
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
