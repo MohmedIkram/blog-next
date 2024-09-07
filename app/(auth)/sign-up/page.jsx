@@ -7,7 +7,6 @@ export default function Login() {
     username: "",
     email: "",
     password: "",
-    confirmPassword: "",
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -23,8 +22,24 @@ export default function Login() {
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   };
-  const handleSignup = () => {
-    console.log("🚀 ~ Login ~ handleSignup:", formValues)
+  const handleSignup = async () => {
+    console.log("🚀 ~ Login ~ handleSignup:", formValues);
+    const response = await fetch("/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formValues),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log("🚀 ~ handleSignup ~ response:", result);
+      console.log("Signup successful!");
+    } else {
+      console.error("🚀 ~ handleSignup ~ error:", await response.text());
+      console.log("Signup failed!");
+    }
   };
 
   useEffect(() => {
@@ -51,9 +66,9 @@ export default function Login() {
     } else if (values.password.length > 10) {
       errors.password = "Password cannot exceed more than 10 characters";
     }
-    if (values.password !== values.confirmPassword) {
-      errors.confirmPassword = "Those passwords didn’t match. Try again.";
-    }
+    // if (values.password !== values.confirmPassword) {
+    //   errors.confirmPassword = "Those passwords didn’t match. Try again.";
+    // }
     return errors;
   };
   return (
@@ -85,7 +100,9 @@ export default function Login() {
             console.log("Entered Details", formValues)
           )}
           <form className="max-w-md md:ml-auto w-full" onSubmit={handleSubmit}>
-            <h3 className="text-gray-800 text-3xl font-extrabold mb-8">Sign up</h3>
+            <h3 className="text-gray-800 text-3xl font-extrabold mb-8">
+              Sign up
+            </h3>
 
             <div className="space-y-4">
               <div>
@@ -138,7 +155,7 @@ export default function Login() {
                   onChange={handleChange}
                 />
               </div> */}
-              <p>{formErrors.confirmPassword}</p>
+              {/* <p>{formErrors.confirmPassword}</p> */}
               {/* <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center">
                   <input
