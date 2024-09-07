@@ -15,7 +15,7 @@ export default async function Login() {
               intuitively designed login form. Effortlessly access your account.
             </p>
             <p class="text-sm mt-12 text-gray-800">
-              Don't have an account
+              Don&apos;t have an account
               <Link
                 href="/sign-up"
                 class="text-blue-600 font-semibold hover:underline ml-1"

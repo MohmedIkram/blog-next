@@ -589,7 +589,7 @@ export default async function Home() {
         aria-labelledby="faq-title"
         class="relative overflow-hidden bg-slate-50 py-20 sm:py-32"
       >
-        <img
+        <Image
           alt=""
           loading="lazy"
           width="1558"
