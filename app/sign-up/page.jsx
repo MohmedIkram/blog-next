@@ -1,34 +1,107 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default async function Login() {
+export default function Login() {
+  const initialValues = {
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
+  };
+  const handleSignup = () => {
+    console.log("🚀 ~ Login ~ formValues:", formValues)
+
+
+  };
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(formValues);
+    }
+  }, [formErrors, formValues, isSubmit]);
+  const validate = (values) => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (!values.username) {
+      errors.username = "Username is required!";
+    }
+    if (!values.email) {
+      errors.email = "Email is required!";
+    } else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid email format!";
+    }
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 4) {
+      errors.password = "Password must be more than 4 characters";
+    } else if (values.password.length > 10) {
+      errors.password = "Password cannot exceed more than 10 characters";
+    }
+    if (values.password !== values.confirmPassword) {
+      errors.confirmPassword = "Those passwords didn’t match. Try again.";
+    }
+    return errors;
+  };
   return (
     <div className="font-[sans-serif]">
       <div className="min-h-screen flex fle-col items-center justify-center py-6 px-4">
         <div className="grid md:grid-cols-2 items-center gap-10 max-w-6xl w-full">
           <div>
             <h2 className="lg:text-5xl text-4xl font-extrabold lg:leading-[55px] text-gray-800">
-              Seamless Login for Exclusive Access
+              Seamless sign up for Exclusive Access
             </h2>
             <p className="text-sm mt-6 text-gray-800">
-              Immerse yourself in a hassle-free login journey with our
-              intuitively designed login form. Effortlessly access your account.
+              Immerse yourself in a hassle-free sign up journey with our
+              intuitively designed sign upform. Effortlessly access your
+              account.
             </p>
             <p className="text-sm mt-12 text-gray-800">
-              Don&apos;t have an account
+              Have an account
               <Link
-                href="/sign-up"
+                href="/login"
                 className="text-blue-600 font-semibold hover:underline ml-1"
               >
-                Register here
+                login
               </Link>
             </p>
           </div>
-
-          <form className="max-w-md md:ml-auto w-full">
-            <h3 className="text-gray-800 text-3xl font-extrabold mb-8">Sign in</h3>
+          {Object.keys(formErrors).length === 0 && isSubmit ? (
+            <div className="ui message success">Signed in successfully</div>
+          ) : (
+            console.log("Entered Details", formValues)
+          )}
+          <form className="max-w-md md:ml-auto w-full" onSubmit={handleSubmit}>
+            <h3 className="text-gray-800 text-3xl font-extrabold mb-8">Sign up</h3>
 
             <div className="space-y-4">
+              <div>
+                <input
+                  name="username"
+                  type="text"
+                  required
+                  className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
+                  placeholder="Username"
+                  value={formValues.username}
+                  onChange={handleChange}
+                />
+              </div>
+              <p>{formErrors.username}</p>
               <div>
                 <input
                   name="email"
@@ -37,8 +110,11 @@ export default async function Login() {
                   required
                   className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
                   placeholder="Email address"
+                  value={formValues.email}
+                  onChange={handleChange}
                 />
               </div>
+
               <div>
                 <input
                   name="password"
@@ -47,9 +123,25 @@ export default async function Login() {
                   required
                   className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
                   placeholder="Password"
+                  value={formValues.password}
+                  onChange={handleChange}
                 />
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-4">
+              <p>{formErrors.password}</p>
+
+              {/* <div>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm password"
+                  required
+                  className="bg-gray-100 w-full text-sm text-gray-800 px-4 py-3.5 rounded-md outline-blue-600 focus:bg-transparent"
+                  value={formValues.confirmPassword}
+                  onChange={handleChange}
+                />
+              </div> */}
+              <p>{formErrors.confirmPassword}</p>
+              {/* <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center">
                   <input
                     id="remember-me"
@@ -72,19 +164,20 @@ export default async function Login() {
                     Forgot your password?
                   </Link>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="!mt-8">
               <button
                 type="button"
                 className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+                onClick={handleSignup}
               >
-                Log in
+                Sign Up
               </button>
             </div>
 
-            <div className="space-x-6 flex justify-center mt-8">
+            {/* <div className="space-x-6 flex justify-center mt-8">
               <button type="button" className="border-none outline-none">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +246,7 @@ export default async function Login() {
                   ></path>
                 </svg>
               </button>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>
